@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="shortcut icon" href="images/Product1.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap-5.2.3-dist/css/bootstrap.min.css">
+
+
+</head>
+<%- include('../inc/top') %>
+<script>
+function dien_thoai(){
+
+};
+function do_gia_dung(){
+  
+};
+function may_tinhs(){
+  
+}
+
+</script>
+
+        <div>
+          
+   <h1 style="padding-left: 30%; margin: 20px;">Danh Sách Sản Phẩm  ( Products) </h1>
+
+ 
+  <!-- Comp1 -->
+   <div style="padding-left: 20%;">   
+ <!-- Thanh TapBar -->
+    <div class="row col-9 rounded border border-success p-1 mb-1  bg-success bg-opacity-50">
+
+        <div class="col-10">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+              </form>   
+        </div>
+    
+        <div class="col-2 ">
+            <select class="form-select bg-info bg-opacity-" id="select_from" placeholder="null">
+                <option selected>Thể Loại</option>
+                <option value="do_gia_dung">Đồ Gia Dụng</option>
+                <option value="ruou">Rượu</option>
+                <option value="dien_thoai">Điện Thoại</option>
+
+              <!-- Thêm nếu cần thiết -->
+
+
+
+
+              <!-- --------- -->
+            </select>
+        </div>
+
+   </div>
+ 
+  <!-- DỮ liệu bảng  -->
+  <div class="col-9  boder border-success border-1">
+
+   <!-- <table class="table table-striped border border-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Ảnh</th>
+        <th scope="col">Tên sản phẩm</th>
+        <th scope="col">Thể Loại</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Ghi Chú</th>
+        <th scope="col">Số Lượng</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td><img src="/images/sp1.png" alt="" class="img-fluid img" width="100", height="100"></td>
+        <td>Rượu vang châu á</td>
+        <td>Rượu</td>
+        <td>4.000.000 đ</td>
+        <td>Hàng Nhập Khẩu</td>
+        <td><i class="bi bi-x-circle p-2" ></i><i class="bi bi-pencil-fill"></i></td>
+      </tr>
+
+      <tr>
+        <th scope="row">2</th>
+        <td><img src="/images/Ruou_ing1.png" alt="" class="img-fluid img" width="100", height="100"></td>
+        <td>Rượu vang chát </td>
+        <td>Rượu</td>
+        <td>3.000.000 đ</td>
+        <td>Hàng Trong Nước</td>
+        <td><i class="bi bi-x-circle p-2" ></i><i class="bi bi-pencil-fill"></i></td>
+      </tr>
+
+      <tr>
+        <th scope="row">3</th>
+        <td><img src="/images/Ghe_img.jpg" alt="" class="img-fluid img" width="100", height="100"></td>
+        <td>Ghế Cherry Gỗ Tự Nhiên</td>
+        <td>Đồ Gia Dụng</td>
+        <td>599.000 đ</td>
+        <td>Hàng Trong Nước</td>
+        <td><i class="bi bi-x-circle p-2" ></i><i class="bi bi-pencil-fill"></i></td>
+      </tr>
+
+      <tr>
+        <th scope="row">4</th>
+        <td><img src="/images/Dien_Thoai.jpg" alt="" class="img-fluid img" width="100", height="100"></td>
+        <td>Điện Thoại Để Bàn Có Dây</td>
+        <td>Điện Thoại</td>
+        <td>429.000 đ</td>
+        <td>Hàng Trong Nước</td>
+        <td><i class="bi bi-x-circle p-2" ></i><i class="bi bi-pencil-fill"></i></td>
+      </tr>
+    </tbody>
+  </table> -->
+
+
+  <table class="table table-bordered border border-dark border-2 table-info">
+    
+      <tr class="table-warning">
+        <th scope="col">Mã Sản Phẩm </th>
+        <th scope="col">Tên sản phẩm</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Thể Loại</th>
+        <th scope="col">Ảnh</th>
+         <!-- Thêm nếu cần thiết -->
+         <th scope="col">Chức Năng</th>
+
+
+         <!-- -------- -->
+        
+      </tr>
+  
+      <% listSP.forEach( (row) => {  %>
+          
+  
+       <tr>
+
+          <th> <%= row._id %> </th>
+          <th> <p class="text-dark"><%=row.name %></p> </th>
+          <th> <p class="text-danger"><%=row.price %></p> </th>
+          <!-- <p class="text-decoration-underline text-danger">đ</p> -->
+
+          <th> <%=row.description %>     
+          
+            <%  if(typeof(row.the_loai) !='undefined') { %>
+              <%=row.the_loai.name %>   
+             <% } %>
+
+          </th>
+         
+          <th> <img src="<%=row.image %>" alt="" height="80px",width='50px'>   </th>
+
+          
+
+   <!-- Thêm nếu cần thiết -->
+         
+          <th> 
+            <a href="/sua/<%= row._id %>"> <img src="images/Upload.png"  alt="" height="20px" width="20px"/>  </a>
+            <a href="/xoa/<%= row._id %>"> <img src="images/Delete.jpg"  alt="" height="20px" width="20px"/>  </a>
+            <a href="/thongtin/<%= row._id %>"> <img src="images/info.png"  alt="" height="20px" width="20px"/>  </a>
+          </th>
+
+
+        <!-- -------- -->
+      </tr>
+  
+    <%  });   %>
+  
+      
+  
+  </table>
+  
+
+
+  </div>
+
+</div>
+
+
+           
+        </div>
+
+     
+
+
+    </div>
+
+    <script src="/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xóa Sản Phẩm</title>
+    <link rel="shortcut icon" href="images/Delete.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap-5.2.3-dist/css/bootstrap.min.css">
+</head>
+
+<%- include('../inc/top') %>
+    <!-- Div thân -->
+    <div class="col-5 container">
+
+<script>
+    let msg='Đã Thực Hiện Yêu Cầu'
+   function thongbao(){
+    alert(msg)
+   }
+</script>
+
+
+<div class="container py-5">
+    <h1 class="text-center mb-4"> Xóa sản phẩm</h1>
+  
+    <form action="" method="post">
+      <div class="row mb-3">
+        <div class="col-md-2 text-end">
+          <label for="name" class="form-label">Tên sản phẩm:</label>
+        </div>
+        <div class="col-md-10">
+            <input type="text" name="name" placeholder="Tên SP" class="form-control"
+            value="<%= objSP.name %>">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md-2 text-end">
+          <label for="price" class="form-label">Giá:</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" name="price" value="<%= objSP.price %>" class="form-control" placeholder="Giá">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md-2 text-end">
+          <label for="theloai" class="form-label">Thể loại:</label>
+        </div>
+        <div class="col-md-10">
+             
+            <select name="the_loai" class="form-select" >
+                <% listTL.forEach( (row)=>{
+                    let selected = '';
+                    if(  String ( row._id) == String( objSP.the_loai)  )
+                        selected = '  selected  ';
+                    %>
+                    <option   <%= selected %>
+                            value="<%= row._id  %>">  
+                            <%= row.name  %>  </option>
+                <%   }) %>
+            </select>
+
+
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md-2 text-end">
+          <label for="image" class="form-label">Hình ảnh:</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" name="image" class="form-control" onchange="previewImage(event)" value=" <%= objSP.image  %> ">
+        </div>
+      </div>
+  
+      <div class="row mb-3 justify-content-center">
+        <div class="col-md-4 text-center">
+          <button type="submit" onclick="thongbao()" class="btn btn-primary w-100">DELETE</button>
+        </div>
+      </div>
+    </form>
+    
+  </div>
+  
+
+  
+
+    </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script src="/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>
